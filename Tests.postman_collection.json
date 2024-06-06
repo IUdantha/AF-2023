@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "743d9589-b88e-4b7f-9d5d-0d6b80d06218",
+		"name": "Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34147746"
+	},
+	"item": [
+		{
+			"name": "getall",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author\" : \"Isuru\"\r\n}   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/book/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"book",
+						"1"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Max",
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "300",
+							"disabled": true
+						},
+						{
+							"key": "availability",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author\" : \"Isuru\"\r\n}   ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/books/search?title=Sun Book&author=Max&price=300&availability=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"books",
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Sun Book"
+						},
+						{
+							"key": "author",
+							"value": "Max"
+						},
+						{
+							"key": "price",
+							"value": "300"
+						},
+						{
+							"key": "availability",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"title\":\"Sun Book\",\r\n    \"author\": \"Max\",\r\n    \"price\":300,\r\n    \"genre\":\"A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/books/purchase/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"books",
+						"purchase",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5050/purchases",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"purchases"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
