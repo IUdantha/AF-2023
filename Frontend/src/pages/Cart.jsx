@@ -28,19 +28,19 @@ function Cart() {
             <td>Price</td>
             <td>Genre</td>
           </tr>
-          <tbody>
-            {orders.map((order, index) => (
-              <tr key={index}>
-                <td>{order.purchaseId}</td>
-                <td>{order.id}</td>
-                <td>{order.title}</td>
-                <td>{order.author}</td>
-                <td>{order.price}</td>
-                <td>{order.genre}</td>
-              </tr>
-            ))}
-          </tbody>
         </thead>
+        <tbody>
+          {orders.map((order, index) => (
+            <tr key={index}>
+              <td>{order.purchaseId}</td>
+              <td>{order.id}</td>
+              <td>{order.title}</td>
+              <td>{order.author}</td>
+              <td>{order.price}</td>
+              <td>{order.genre}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </>
   );

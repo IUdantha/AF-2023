@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import {useState, useEffect} from "react";
+import {useParams} from "react-router-dom";
 
 function BookDetails() {
   const [book, setBook] = useState();
-  const { id } = useParams();
+  const {id} = useParams();
   useEffect(() => {
     axios
       .get(`http://localhost:5050/book/${id}`)
@@ -19,7 +19,12 @@ function BookDetails() {
 
   const purchaseHandler = (id) => {
     axios
-      .post(`http://localhost:5050/books/purchase/${Math.random()}`, book)
+      .post(
+        `http://localhost:5050/books/purchase/${Math.floor(
+          Math.random() * 10
+        )}`,
+        book
+      )
       .then(() => {
         alert(
           "Your Book added to the cart, You are selected book id is : " + id
