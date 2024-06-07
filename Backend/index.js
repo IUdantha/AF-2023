@@ -7,7 +7,7 @@ const port = 5050;
 app.use(cors());
 app.use(express.json());
 
-const books = [
+let books = [
   {
     id: 1,
     title: "Sun Book",
@@ -59,7 +59,7 @@ app.get("/book/:id", (req, res) => {
 });
 
 app.get("/books/search", (req, res) => {
-  const { title, author, price, availability } = req.query;
+  const {title, author, price, availability} = req.query;
 
   let filteredBooks = books;
 
@@ -82,14 +82,33 @@ app.get("/books/search", (req, res) => {
 
 app.post("/books/purchase/:id", (req, res) => {
   const purchaseId = req.params.id;
-  const { id, title, author, price, genre } = req.body;
-  const purchase = { purchaseId, id, title, author, price, genre };
+  const {id, title, author, price, genre} = req.body;
+  const purchase = {purchaseId, id, title, author, price, genre};
   purchases.push(purchase);
   res.send(200, purchase);
 });
 
 app.get("/purchases", (req, res) => {
   res.send(200, purchases);
+});
+
+app.delete("/books/:id", (req, res) => {
+  const id = Number(req.params.id);
+  books = books.filter((book) => book.id !== id);
+  res.send(200, "The book deleted successfully" + id);
+});
+
+app.put("/book/edit/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const {title, author} = req.body;
+  const book = books.find((book) => book.id === id);
+  if (book) {
+    book.title = title;
+    book.author = author;
+    res.send(200, "Updated successfully");
+  } else {
+    res.send(404, "The book not found");
+  }
 });
 
 app.listen(port, () => {
